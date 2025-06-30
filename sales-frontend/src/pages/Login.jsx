@@ -8,6 +8,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+  try{
     const res = await fetch('http://localhost:3000/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -29,10 +30,15 @@ export default function Login() {
     } else {
       alert(data.message);
     }
+  }
+  catch (error) {
+    console.error('Error al iniciar sesión:', error);
+    alert('Error al conectar al servidor. Contacta a un administrador e intenta luego.');
+  }
   };
-
   return (
-    <div className="container py-5">
+  <div className='bg-dark text-white d-flex justify-content-center align-items-center min-vh-100'>
+     <div className="container py-5">
       <h2>Iniciar sesión</h2>
       <input
         type="email"
@@ -49,6 +55,7 @@ export default function Login() {
       <button className="btn btn-primary" onClick={handleLogin}>
         Entrar
       </button>
-    </div>
+     </div>
+   </div> 
   );
 }

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'; 
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Employee from './pages/Empleados'; 
+import Employeeinfo from './pages/EmployeeInfo';
 function App() {
   useEffect(() => {
     // Habilita el toast si Bootstrap lo necesita dinámicamente
@@ -23,10 +23,11 @@ function App() {
   return (
     <>
      <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/empleados" element={<Employee />} />
+      <Route path="/employeeinfo" element={<Employeeinfo />} />
      
     </Routes>
     </>

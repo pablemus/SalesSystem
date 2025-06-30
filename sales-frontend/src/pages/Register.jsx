@@ -20,11 +20,16 @@ export default function Register() {
     });
 
     const data = await res.json();
+    try{
     if (res.ok) {
       alert('Usuario registrado');
-      navigate('/')
+      navigate('/empleados')
     } else {
       alert(data.message);
+    }
+    } catch (error) {
+      console.error('Error al registrar usuario:', error);
+      alert('Error al conectar al servidor. Contacta a un administrador e intenta luego.');
     }
   };
 

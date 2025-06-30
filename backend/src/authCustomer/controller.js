@@ -5,35 +5,39 @@ const jwt = require('jsonwebtoken');
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET
 const register = async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, address, phone, birthday } = req.body;
 
-  if (!name || !email || !password || !role) {
+  if (!name || !email || !password || !address || !phone || !birthday) {
     return res.status(400).json({ message: "Todos los campos son obligatorios" });
   }
 
-  const existingUser = await prisma.user.findUnique({ where: { email } });
+  const existingUser = await prisma.customer.findUnique({ where: { email } });
   if (existingUser) {
     return res.status(400).json({ message: "Este correo ya está en uso" });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await prisma.user.create({
+  const customer = await prisma.customer.create({
     data: {
       name,
       email,
       password: hashedPassword,
-      role,
+      address,
+      phone,
+      birthday
     }
   });
 
   res.status(201).json({
     message: "Usuario creado con éxito",
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role
+    customer: {
+      id: customer.id,
+      name: customer.name,
+      email: customer.email,
+      address: customer.address,
+      phone: customer.phone,
+      birthday: customer.birthday
     }
   });
 };
@@ -41,28 +45,27 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) {
+  const customer = await prisma.customer.findUnique({ where: { email } });
+  if (!customer) {
     return res.status(400).json({ message: "Correo o contraseña incorrectos" });
   }
 
-  const valid = await bcrypt.compare(password, user.password);
+  const valid = await bcrypt.compare(password, customer.password);
   if (!valid) {
     return res.status(400).json({ message: "Correo o contraseña incorrectos" });
   }
 
-  const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, {
+  const token = jwt.sign({ id: customer.id, role: customer.role }, JWT_SECRET, {
     expiresIn: '2h',
   });
 
   res.json({
     message: "Login exitoso",
     token,
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role
+    customer: {
+      id: customer.id,
+      name: customer.name,
+      email: customer.email,
     }
   });
 
