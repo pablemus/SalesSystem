@@ -81,7 +81,6 @@ const EmployeeInfo = () => {
             <select className="form-select" name="role" value={form.role} onChange={handleChange}>
               <option value="employee">employee</option>
               <option value="admin">admin</option>
-              <option value="customer">customer</option>
             </select>
           </div>
 

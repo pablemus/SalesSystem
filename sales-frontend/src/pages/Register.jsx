@@ -5,7 +5,7 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
-    role: 'customer'
+    role: 'employee'
   });
     const navigate = useNavigate();
   const handleSubmit = async () => {
@@ -40,8 +40,7 @@ export default function Register() {
       <input className="form-control mb-2" placeholder="Correo" onChange={e => setForm({ ...form, email: e.target.value })} />
       <input className="form-control mb-2" placeholder="Contraseña" type="password" onChange={e => setForm({ ...form, password: e.target.value })} />
       <select className="form-select mb-3" onChange={e => setForm({ ...form, role: e.target.value })}>
-        <option value="customer">employee</option>
-        <option value="employee">customer</option>
+        <option value="employee">employee</option>
       </select>
       <button className="btn btn-success" onClick={handleSubmit}>Registrar</button>
     </div>

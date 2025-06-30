@@ -55,7 +55,7 @@ const login = async (req, res) => {
     return res.status(400).json({ message: "Correo o contraseña incorrectos" });
   }
 
-  const token = jwt.sign({ id: customer.id, role: customer.role }, JWT_SECRET, {
+  const token = jwt.sign({ id: customer.id, name: customer.name, role: customer.role }, JWT_SECRET, {
     expiresIn: '2h',
   });
 

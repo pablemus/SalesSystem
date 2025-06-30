@@ -1,0 +1,24 @@
+{
+  "name": "salessystem",
+  "version": "1.0.0",
+  "description": "A simple and modular sales system with role-based authentication. Includes a Node.js backend and a React frontend, designed for administrative, employee, and customer-facing use cases.",
+  "main": "index.js",
+  "scripts": {
+  "start": "concurrently \"npm start --prefix backend\" \"npm run dev --prefix sales-frontend\""
+}
+,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablemus/SalesSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablemus/SalesSystem/issues"
+  },
+  "homepage": "https://github.com/pablemus/SalesSystem#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

@@ -8,20 +8,23 @@ export default function Empleados() {
 
   const token = localStorage.getItem('token');
   let role = '';
-
+  let employeename = '';
   if (token) {
-    try {
-      const decoded = jwtDecode(token);
-      role = decoded.role;
-    } catch (err) {
-      console.error('Token inválido:', err);
-    }
+  try {
+    const decoded = jwtDecode(token);
+    console.log('Token decodificado:', decoded); // 👈 agrega esto
+    role = decoded.role;
+    employeename = decoded.name;
+  } catch (err) {
+    console.error('Token inválido:', err);
   }
+}
 
   return (
     <div className="min-vh-100 bg-dark text-white d-flex align-items-center justify-content-center">
       <div className="container py-5 text-center">
         <h1>Sistema de empleados</h1>
+        <h2>Bienvenido {employeename}</h2>
 
         {role === 'admin' && (
           <>
