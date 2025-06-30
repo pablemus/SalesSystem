@@ -59,4 +59,8 @@ A simple and modular sales system with role-based authentication. Includes a Nod
 
 ## 🔐 Using the Token
 
-Upon successful login, the backend retu
+Upon successful login, the backend returns a **JWT**.  
+This token must be included in protected requests using the following header:
+
+Authorization: Bearer <token>
+
