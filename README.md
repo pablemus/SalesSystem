@@ -8,7 +8,7 @@ A simple and modular sales system with role-based authentication. Includes a Nod
 
 ### Backend
 - **Node.js** & **Express** – RESTful API
-- **MySQL (Amazon RDS)** – Scalable relational database hosted in AWS
+- **MySQL (Azure Database for MySQL)** – Scalable relational database hosted in Azure
 - **Prisma ORM** – Database access and migrations
 - **JWT** (`jsonwebtoken`) – Token-based authentication
 - **bcryptjs** – Secure password hashing
@@ -21,8 +21,8 @@ A simple and modular sales system with role-based authentication. Includes a Nod
 - **jwt-decode** – Token decoding on the client
 
 ### Cloud Integration
-- **Amazon RDS (MySQL)** – Remote database hosting for production
-- **Amazon S3** – Image and file storage for product photos (coming soon)
+- **Azure Database for MySQL** – Remote database hosting for production
+- **Azure Blob Storage** – Image and file storage for product photos (coming soon)
 
 ---
 
@@ -49,11 +49,11 @@ A simple and modular sales system with role-based authentication. Includes a Nod
 - 🔄 Logout and token expiration handling
 - 🧾 Dynamic dashboards for employees and customers
 - 📝 Sales form (create, list, filter)
-- 🖼️ Product image upload and preview (stored in **Amazon S3**)
+- 🖼️ Product image upload and preview (stored in **Azure Blob Storage**)
 - 📊 Visual reports (sales by employee, by date, etc.)
 - 🧑‍💼 Admin panel for user management
 - 📁 Export reports to PDF/CSV
-- 🌐 Full production deployment with AWS integration
+- 🌐 Full production deployment with Azure integration
 
 ---
 
@@ -61,6 +61,4 @@ A simple and modular sales system with role-based authentication. Includes a Nod
 
 Upon successful login, the backend returns a **JWT**.  
 This token must be included in protected requests using the following header:
-
-Authorization: Bearer <token>
 
