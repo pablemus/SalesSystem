@@ -13,7 +13,7 @@ const EmployeeInfo = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/employee-info?name=${search}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/employee-info?name=${search}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -34,7 +34,7 @@ const EmployeeInfo = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/employee-info/${employee.id}`, form, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/employee-info/${employee.id}`, form, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('Empleado modificado correctamente');

@@ -12,7 +12,7 @@ export default function Empleados() {
   if (token) {
   try {
     const decoded = jwtDecode(token);
-    console.log('Token decodificado:', decoded); // 👈 agrega esto
+    console.log('Token decodificado:', decoded); 
     role = decoded.role;
     employeename = decoded.name;
   } catch (err) {

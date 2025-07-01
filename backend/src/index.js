@@ -6,7 +6,10 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
 app.use(express.json());
 
 const authRoutes = require('./auth/routes');
@@ -26,7 +29,7 @@ app.get('/', (req, res) => {
   res.send('Api del sistema de ventas funcionando');
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);

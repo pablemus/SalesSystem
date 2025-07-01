@@ -5,21 +5,7 @@ import Register from './pages/Register';
 import Employee from './pages/Empleados'; 
 import Employeeinfo from './pages/EmployeeInfo';
 function App() {
-  useEffect(() => {
-    // Habilita el toast si Bootstrap lo necesita dinámicamente
-    const toastEl = document.getElementById('adminToast');
-    if (toastEl) {
-      toastEl.classList.remove('show'); // lo ocultamos al iniciar
-    }
-  }, []);
-
-  const handleRegisterClick = () => {
-    const toast = document.getElementById('adminToast');
-    if (toast) {
-      toast.classList.add('show');
-    }
-  };
-
+  
   return (
     <>
      <Routes>
